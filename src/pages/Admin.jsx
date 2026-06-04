@@ -13,7 +13,8 @@ function Admin() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('/api/users');
+      const apiUrl = import.meta.env.VITE_API_URL || '';
+      const res = await fetch(`${apiUrl}/api/users`);
       const data = await res.json();
       setUsers(data);
     } catch (error) {
@@ -24,7 +25,8 @@ function Admin() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        const res = await fetch(`/api/users/${id}`, { method: 'DELETE' });
+        const apiUrl = import.meta.env.VITE_API_URL || '';
+        const res = await fetch(`${apiUrl}/api/users/${id}`, { method: 'DELETE' });
         if (res.ok) {
           // Remove deleted user from state
           setUsers(users.filter(user => user._id !== id));
@@ -48,7 +50,8 @@ function Admin() {
 
   const handleSave = async (id) => {
     try {
-      const res = await fetch(`/api/users/${id}`, {
+      const apiUrl = import.meta.env.VITE_API_URL || '';
+      const res = await fetch(`${apiUrl}/api/users/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editFormData)
