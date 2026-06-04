@@ -24,8 +24,9 @@ function Login() {
       });
       const data = await res.json();
       if (res.ok) {
-        // Login successful - save auth state
+        // Login successful - save auth state and user name
         localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userName', data.name);
         navigate('/home');
       } else {
         alert(data.message || "Login failed");
