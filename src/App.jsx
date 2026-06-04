@@ -8,8 +8,8 @@ import { useState } from 'react'
 function App() {
   // A simple wrapper to protect routes
   const PrivateRoute = ({ children }) => {
-    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-    return isAuthenticated ? children : <Navigate to="/login" replace />;
+    const hasToken = localStorage.getItem('token') !== null;
+    return hasToken ? children : <Navigate to="/login" replace />;
   };
 
   return (

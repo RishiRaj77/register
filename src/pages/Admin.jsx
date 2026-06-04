@@ -14,7 +14,12 @@ function Admin() {
   const fetchUsers = async () => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || '';
-      const res = await fetch(`${apiUrl}/api/users`);
+      const token = localStorage.getItem('token');
+      const res = await fetch(`${apiUrl}/api/users`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       const data = await res.json();
       setUsers(data);
     } catch (error) {
@@ -26,7 +31,13 @@ function Admin() {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
         const apiUrl = import.meta.env.VITE_API_URL || '';
-        const res = await fetch(`${apiUrl}/api/users/${id}`, { method: 'DELETE' });
+        const token = localStorage.getItem('token');
+        const res = await fetch(`${apiUrl}/api/users/${id}`, { 
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         if (res.ok) {
           // Remove deleted user from state
           setUsers(users.filter(user => user._id !== id));
@@ -51,9 +62,13 @@ function Admin() {
   const handleSave = async (id) => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || '';
+      const token = localStorage.getItem('token');
       const res = await fetch(`${apiUrl}/api/users/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(editFormData)
       });
       const data = await res.json();

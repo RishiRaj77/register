@@ -24,9 +24,10 @@ function Login() {
       });
       const data = await res.json();
       if (res.ok) {
-        // Login successful - save auth state and user name
+        // Login successful - save auth state, user name, and token
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userName', data.name);
+        localStorage.setItem('token', data.token);
         navigate('/home');
       } else {
         alert(data.message || "Login failed");

@@ -17,6 +17,7 @@ function Home() {
     // Clear authentication state and user details
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('userName');
+    localStorage.removeItem('token');
     navigate('/login');
   };
 
