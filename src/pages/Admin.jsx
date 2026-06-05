@@ -33,7 +33,7 @@ function Admin() {
       try {
         const apiUrl = import.meta.env.VITE_API_URL || '';
         const token = localStorage.getItem('token');
-        const res = await fetch(`${apiUrl}/api/users/${id}`, { 
+        const res = await fetch(`${apiUrl}/api/users/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -66,7 +66,7 @@ function Admin() {
       const token = localStorage.getItem('token');
       const res = await fetch(`${apiUrl}/api/users/${id}`, {
         method: 'PUT',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
@@ -85,9 +85,9 @@ function Admin() {
     }
   };
 
-  const filteredUsers = users.filter(user => 
-    user.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    user.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
+  const filteredUsers = users.filter(user =>
+    user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
     user._id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -102,16 +102,16 @@ function Admin() {
           Total Users: <strong>{users.length}</strong>
         </div>
         <div className="search-bar">
-          <input 
-            type="text" 
-            placeholder="Search by name, email, or ID..." 
+          <input
+            type="text"
+            placeholder="Search by name, email, or ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
         </div>
       </div>
-      
+
       <div className="admin-table-container">
         <table className="admin-table">
           <thead>
@@ -130,35 +130,35 @@ function Admin() {
               filteredUsers.map(user => (
                 <tr key={user._id}>
                   <td style={{ color: '#888', fontSize: '12px' }}>{user._id}</td>
-                  
+
                   <td>
                     {editingId === user._id ? (
-                      <input 
-                        type="text" 
-                        name="name" 
-                        value={editFormData.name} 
-                        onChange={handleEditChange} 
-                        className="edit-input" 
+                      <input
+                        type="text"
+                        name="name"
+                        value={editFormData.name}
+                        onChange={handleEditChange}
+                        className="edit-input"
                       />
                     ) : user.name}
                   </td>
-                  
+
                   <td>
                     {editingId === user._id ? (
-                      <input 
-                        type="email" 
-                        name="email" 
-                        value={editFormData.email} 
-                        onChange={handleEditChange} 
-                        className="edit-input" 
+                      <input
+                        type="email"
+                        name="email"
+                        value={editFormData.email}
+                        onChange={handleEditChange}
+                        className="edit-input"
                       />
                     ) : user.email}
                   </td>
-                  
+
                   <td style={{ color: '#666', fontSize: '14px' }}>
                     {new Date(user.createdAt).toLocaleDateString()}
                   </td>
-                  
+
                   <td>
                     {editingId === user._id ? (
                       <>
@@ -181,5 +181,5 @@ function Admin() {
     </div>
   );
 }
-
+//
 export default Admin;
