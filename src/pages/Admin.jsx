@@ -5,6 +5,7 @@ function Admin() {
   const [users, setUsers] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editFormData, setEditFormData] = useState({ name: '', email: '' });
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Fetch all users on mount
   useEffect(() => {
@@ -84,10 +85,31 @@ function Admin() {
     }
   };
 
+  const filteredUsers = users.filter(user => 
+    user.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    user.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    user._id.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="admin-container">
       <div className="admin-header">
         <h1>User Administration Dashboard</h1>
+      </div>
+
+      <div className="admin-controls">
+        <div className="total-users">
+          Total Users: <strong>{users.length}</strong>
+        </div>
+        <div className="search-bar">
+          <input 
+            type="text" 
+            placeholder="Search by name, email, or ID..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="search-input"
+          />
+        </div>
       </div>
       
       <div className="admin-table-container">
@@ -102,10 +124,10 @@ function Admin() {
             </tr>
           </thead>
           <tbody>
-            {users.length === 0 ? (
+            {filteredUsers.length === 0 ? (
               <tr><td colSpan="5" style={{ textAlign: 'center', padding: '20px' }}>No users found.</td></tr>
             ) : (
-              users.map(user => (
+              filteredUsers.map(user => (
                 <tr key={user._id}>
                   <td style={{ color: '#888', fontSize: '12px' }}>{user._id}</td>
                   
