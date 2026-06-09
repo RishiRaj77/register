@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -61,7 +63,7 @@ import { Link, useNavigate } from 'react-router-dom';
           <div className="input-group">
             <div className="label-wrapper">
               <label htmlFor="password">Password</label>
-              <Link to="#" className="forgot-password">Forgot password?</Link>
+              <Link to="/forgot-password" className="forgot-password">Forgot password?</Link>
             </div>
             <div className="password-input-wrapper">
               <input
@@ -104,7 +106,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
         </form>
         <div className="theme-footer">
-          <p>Not registered yet? <Link to="/signup">Sign Up ></Link></p>
+          <p>Not registered yet? <Link to="/signup">Sign Up &gt;</Link></p>
         </div>
       </div>
     </div>

@@ -1,59 +1,60 @@
-/* Global Theme Styles inspired by mockup */
+/* Professional Clean Theme - White & Yellow */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #2b6cb0 0%, #9f7aea 50%, #ed64a6 100%);
+  background-color: #f8f9fa; /* Very subtle light grey/white background */
   min-height: 100vh;
-  color: #333;
+  color: #111827;
 }
 
-/* Glass Card */
+/* Clean Card */
 .glass-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   padding: 40px;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f3f4f6;
   width: 100%;
   max-width: 400px;
-  backdrop-filter: blur(10px);
   position: relative;
   text-align: center;
 }
 
 /* Avatar Header */
 .card-avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  margin: -20px auto 20px auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px; /* Squircle look instead of full circle for tech feel */
+  margin: -20px auto 24px auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #d442f5 100%);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  color: white;
+  background-color: #eab308; /* Flat professional yellow */
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(234, 179, 8, 0.2);
 }
 
 .card-avatar svg {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
 }
 
 .glass-card h2 {
-  color: #1a202c;
-  font-size: 28px;
-  margin-bottom: 25px;
+  color: #111827;
+  font-size: 24px;
+  margin-bottom: 24px;
   font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 /* Form Styles */
 .theme-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
 .input-group {
@@ -65,62 +66,60 @@ body {
 .input-group label {
   font-size: 13px;
   font-weight: 600;
-  color: #4a5568;
-  margin-bottom: 8px;
+  color: #374151;
+  margin-bottom: 6px;
 }
 
 .input-group input {
-  padding: 14px 16px;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  font-size: 15px;
-  transition: all 0.3s ease;
-  background: #f7fafc;
-  color: #2d3748;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  color: #111827;
 }
 
 .input-group input::placeholder {
-  color: #a0aec0;
+  color: #9ca3af;
 }
 
 .input-group input:focus {
   outline: none;
-  border-color: #9f7aea;
-  box-shadow: 0 0 0 3px rgba(159, 122, 234, 0.2);
-  background: #ffffff;
+  border-color: #eab308;
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.15);
 }
 
 /* Buttons */
 .btn-primary {
-  color: white;
+  color: #111827;
   border: none;
-  padding: 16px;
-  border-radius: 12px;
-  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.1s ease;
-  margin-top: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  margin-top: 8px;
+  background-color: #facc15;
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  background-color: #eab308;
 }
 
 .btn-primary:active {
-  transform: scale(0.98);
+  transform: translateY(1px);
 }
 
-.btn-blue {
-  background: linear-gradient(135deg, #667eea 0%, #4299e1 100%);
-  box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
+/* Reusing these classes but overriding them to flat colors */
+.btn-blue, .btn-purple {
+  background-color: #facc15;
+  box-shadow: none;
 }
 
-.btn-purple {
-  background: linear-gradient(135deg, #d53f8c 0%, #805ad5 100%);
-  box-shadow: 0 10px 20px rgba(128, 90, 213, 0.3);
+.btn-blue:hover, .btn-purple:hover {
+  background-color: #eab308;
 }
 
 /* Social Buttons */
@@ -128,8 +127,8 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 25px 0;
-  color: #a0aec0;
+  margin: 24px 0;
+  color: #6b7280;
   font-size: 13px;
 }
 
@@ -137,60 +136,58 @@ body {
 .social-divider::after {
   content: '';
   flex: 1;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .social-divider:not(:empty)::before {
-  margin-right: .5em;
+  margin-right: 12px;
 }
 
 .social-divider:not(:empty)::after {
-  margin-left: .5em;
+  margin-left: 12px;
 }
 
 .social-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 25px;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 .social-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid #e2e8f0;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
   background: white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
 }
 
 .social-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  background-color: #f9fafb;
+  border-color: #d1d5db;
 }
 
 /* Footer Links */
 .theme-footer {
   text-align: center;
-  font-size: 14px;
-  color: #718096;
+  font-size: 13px;
+  color: #6b7280;
 }
 
 .theme-footer a {
-  color: #3182ce;
+  color: #ca8a04;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .theme-footer a:hover {
-  color: #2b6cb0;
-  text-decoration: underline;
+  color: #a16207;
 }
 
 /* Full Page Center */
@@ -223,16 +220,16 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  color: #a0aec0;
+  color: #9ca3af;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .password-toggle:hover {
-  color: #4a5568;
+  color: #4b5563;
 }
 
 /* Helper */
@@ -241,11 +238,12 @@ body {
   right: 0;
   top: 0;
   font-size: 12px;
-  color: #667eea;
+  color: #ca8a04;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 .forgot-password:hover {
+  color: #a16207;
   text-decoration: underline;
 }
 .label-wrapper {

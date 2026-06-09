@@ -41,9 +41,16 @@ function Admin() {
         }
       });
       const data = await res.json();
-      setUsers(data);
+      if (res.ok) {
+        setUsers(Array.isArray(data) ? data : []);
+      } else {
+        console.error("Failed to fetch users:", data.message);
+        alert("Failed to load users: " + (data.message || "Unknown error"));
+        setUsers([]);
+      }
     } catch (error) {
       console.error("Failed to fetch users", error);
+      setUsers([]);
     }
   };
 
@@ -104,11 +111,11 @@ function Admin() {
     }
   };
 
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    user._id.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredUsers = Array.isArray(users) ? users.filter(user =>
+    (user.name && user.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+    (user.email && user.email.toLowerCase().includes(searchQuery.toLowerCase())) ||
+    (user._id && user._id.toLowerCase().includes(searchQuery.toLowerCase()))
+  ) : [];
 
   const getExportData = () => {
     return users.map(user => ({
@@ -167,31 +174,30 @@ function Admin() {
 
   return (
     <div className="admin-container">
-      <div className="admin-header" style={{ color: 'white', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
+      <div className="admin-header">
         <h1>User Administration Dashboard</h1>
       </div>
 
-      <div className="admin-controls" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', borderRadius: '16px' }}>
+      <div className="admin-controls">
         <div className="total-users">
           Total Users: <strong>{users.length}</strong>
         </div>
-        <div className="search-bar" style={{ flexGrow: 1, margin: '0 20px' }}>
+        <div className="search-bar" style={{ flexGrow: 1, margin: '0 24px' }}>
           <input
             type="text"
             placeholder="Search by name, email, or ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
-            style={{ width: '100%', maxWidth: '400px', background: '#f7fafc' }}
           />
         </div>
-        <div className="export-controls" style={{ display: 'flex', gap: '10px' }}>
-          <button onClick={handleDownloadExcel} className="btn-primary btn-blue" style={{ padding: '10px 16px', marginTop: 0 }}>Download Excel</button>
-          <button onClick={handleDownloadCSV} className="btn-primary btn-purple" style={{ padding: '10px 16px', marginTop: 0 }}>Download CSV</button>
+        <div className="export-controls">
+          <button onClick={handleDownloadExcel} className="btn-primary" style={{ padding: '10px 16px', marginTop: 0 }}>Download Excel</button>
+          <button onClick={handleDownloadCSV} className="btn-primary" style={{ padding: '10px 16px', marginTop: 0 }}>Download CSV</button>
         </div>
       </div>
 
-      <div className="admin-table-container" style={{ background: 'rgba(255, 255, 255, 0.95)', backdropFilter: 'blur(10px)', borderRadius: '16px' }}>
+      <div className="admin-table-container">
         <table className="admin-table">
           <thead>
             <tr>
@@ -208,7 +214,7 @@ function Admin() {
             ) : (
               filteredUsers.map(user => (
                 <tr key={user._id}>
-                  <td style={{ color: '#888', fontSize: '12px' }}>{user._id}</td>
+                  <td style={{ color: '#9ca3af', fontFamily: 'monospace' }}>{user._id}</td>
 
                   <td>
                     {editingId === user._id ? (
