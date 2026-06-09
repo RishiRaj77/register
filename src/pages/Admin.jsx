@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as XLSX from 'xlsx';
 import '../styles/admin.css';
 
 function Admin() {
@@ -26,7 +27,7 @@ function Admin() {
       setIsAuthenticated(true);
       setPasswordError('');
     } else {
-      setPasswordError('Incorrect password');
+      setPasswordError('Incorrect password!');
     }
   };
 
@@ -109,15 +110,42 @@ function Admin() {
     user._id.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const getExportData = () => {
+    return users.map(user => ({
+      ID: user._id,
+      Name: user.name,
+      Email: user.email,
+      'Created At': new Date(user.createdAt).toLocaleDateString()
+    }));
+  };
+
+  const handleDownloadExcel = () => {
+    if (users.length === 0) return alert("No data to download");
+    const data = getExportData();
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+    XLSX.writeFile(workbook, "users_data.xlsx");
+  };
+
+  const handleDownloadCSV = () => {
+    if (users.length === 0) return alert("No data to download");
+    const data = getExportData();
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+    XLSX.writeFile(workbook, "users_data.csv");
+  };
+
   if (!isAuthenticated) {
     return (
       <div className="admin-login-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f4f4f9' }}>
         <div style={{ background: 'white', padding: '40px', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', textAlign: 'center' }}>
           <h2 style={{ marginBottom: '20px' }}>Admin Access Required</h2>
           <form onSubmit={handlePasswordSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <input 
-              type="password" 
-              placeholder="Enter Admin Password" 
+            <input
+              type="password"
+              placeholder="Enter Admin Password"
               value={passwordInput}
               onChange={(e) => setPasswordInput(e.target.value)}
               style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc' }}
@@ -138,18 +166,23 @@ function Admin() {
         <h1>User Administration Dashboard</h1>
       </div>
 
-      <div className="admin-controls">
+      <div className="admin-controls" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
         <div className="total-users">
           Total Users: <strong>{users.length}</strong>
         </div>
-        <div className="search-bar">
+        <div className="search-bar" style={{ flexGrow: 1, margin: '0 20px' }}>
           <input
             type="text"
             placeholder="Search by name, email, or ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
+            style={{ width: '100%', maxWidth: '400px' }}
           />
+        </div>
+        <div className="export-controls" style={{ display: 'flex', gap: '10px' }}>
+          <button onClick={handleDownloadExcel} style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Download Excel</button>
+          <button onClick={handleDownloadCSV} style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Download CSV</button>
         </div>
       </div>
 
