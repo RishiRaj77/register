@@ -22,13 +22,10 @@ function Home() {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        {/* Dynamic Avatar based on first letter of name */}
-        <div style={styles.avatarContainer}>
-          <div style={styles.avatar}>
-            {userName.charAt(0).toUpperCase()}
-          </div>
+    <div className="page-center">
+      <div className="glass-card">
+        <div className="card-avatar">
+          {userName.charAt(0).toUpperCase()}
         </div>
         
         {/* Greeting with name */}
@@ -55,15 +52,8 @@ function Home() {
         {/* Glowing Logout Button */}
         <button 
           onClick={handleLogout}
-          style={styles.logoutBtn}
-          onMouseOver={(e) => {
-            e.target.style.transform = 'translateY(-2px)';
-            e.target.style.boxShadow = '0 10px 20px rgba(255, 75, 114, 0.4)';
-          }}
-          onMouseOut={(e) => {
-            e.target.style.transform = 'translateY(0)';
-            e.target.style.boxShadow = '0 4px 15px rgba(255, 75, 114, 0.2)';
-          }}
+          className="btn-primary btn-blue"
+          style={{ width: '100%' }}
         >
           Log Out Securely
         </button>
@@ -73,109 +63,53 @@ function Home() {
 }
 
 const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '100vh',
-    background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)',
-    fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-    padding: '20px'
-  },
-  card: {
-    background: 'rgba(255, 255, 255, 0.05)',
-    backdropFilter: 'blur(16px)',
-    WebkitBackdropFilter: 'blur(16px)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    padding: '50px 40px',
-    borderRadius: '24px',
-    boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
-    textAlign: 'center',
-    maxWidth: '480px',
-    width: '100%',
-    position: 'relative',
-    overflow: 'hidden'
-  },
-  avatarContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: '24px'
-  },
-  avatar: {
-    width: '80px',
-    height: '80px',
-    borderRadius: '50%',
-    background: 'linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '36px',
-    fontWeight: 'bold',
-    color: 'white',
-    boxShadow: '0 10px 25px rgba(139, 92, 246, 0.4)'
-  },
   title: {
-    color: '#ffffff',
-    fontSize: '32px',
+    color: '#1a202c',
+    fontSize: '28px',
     fontWeight: '800',
-    marginBottom: '16px',
+    marginBottom: '10px',
     letterSpacing: '-0.5px'
   },
   highlight: {
-    background: 'linear-gradient(to right, #a78bfa, #f472b6)',
+    background: 'linear-gradient(to right, #667eea, #d442f5)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
     color: 'transparent'
   },
   subtitle: {
-    color: '#94a3b8',
-    fontSize: '16px',
+    color: '#718096',
+    fontSize: '15px',
     lineHeight: '1.6',
-    marginBottom: '40px',
+    marginBottom: '30px',
     fontWeight: '400'
   },
   statsContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     gap: '20px',
-    marginBottom: '40px'
+    marginBottom: '30px'
   },
   statBox: {
     flex: 1,
-    background: 'rgba(255, 255, 255, 0.03)',
-    border: '1px solid rgba(255, 255, 255, 0.05)',
-    padding: '20px',
+    background: '#f7fafc',
+    border: '1px solid #e2e8f0',
+    padding: '15px',
     borderRadius: '16px',
     transition: 'transform 0.3s ease',
   },
   statNumber: {
-    color: '#ffffff',
-    fontSize: '24px',
+    color: '#2d3748',
+    fontSize: '22px',
     fontWeight: 'bold',
-    marginBottom: '8px'
+    marginBottom: '5px'
   },
   statLabel: {
-    color: '#64748b',
-    fontSize: '14px',
+    color: '#718096',
+    fontSize: '13px',
     textTransform: 'uppercase',
     letterSpacing: '1px',
     fontWeight: '600'
-  },
-  logoutBtn: {
-    background: 'linear-gradient(135deg, #ff4b72 0%, #ff7657 100%)',
-    color: 'white',
-    border: 'none',
-    padding: '16px 32px',
-    borderRadius: '12px',
-    fontSize: '16px',
-    cursor: 'pointer',
-    fontWeight: '700',
-    width: '100%',
-    transition: 'all 0.3s ease',
-    boxShadow: '0 4px 15px rgba(255, 75, 114, 0.2)',
-    letterSpacing: '0.5px'
   }
 };
 

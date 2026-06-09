@@ -139,19 +139,24 @@ function Admin() {
 
   if (!isAuthenticated) {
     return (
-      <div className="admin-login-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f4f4f9' }}>
-        <div style={{ background: 'white', padding: '40px', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', textAlign: 'center' }}>
-          <h2 style={{ marginBottom: '20px' }}>Admin Access Required</h2>
-          <form onSubmit={handlePasswordSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <input
-              type="password"
-              placeholder="Enter Admin Password"
-              value={passwordInput}
-              onChange={(e) => setPasswordInput(e.target.value)}
-              style={{ padding: '10px', fontSize: '16px', borderRadius: '4px', border: '1px solid #ccc' }}
-            />
-            {passwordError && <p style={{ color: 'red', margin: 0, fontSize: '14px' }}>{passwordError}</p>}
-            <button type="submit" style={{ padding: '10px', fontSize: '16px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+      <div className="page-center">
+        <div className="glass-card">
+          <div className="card-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h2>Admin Access</h2>
+          <form onSubmit={handlePasswordSubmit} className="theme-form">
+            <div className="input-group">
+              <input
+                type="password"
+                placeholder="Enter Admin Password"
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+                required
+              />
+            </div>
+            {passwordError && <p style={{ color: '#e53e3e', margin: 0, fontSize: '14px', textAlign: 'left' }}>{passwordError}</p>}
+            <button type="submit" className="btn-primary btn-purple">
               Access Dashboard
             </button>
           </form>
@@ -162,11 +167,11 @@ function Admin() {
 
   return (
     <div className="admin-container">
-      <div className="admin-header">
+      <div className="admin-header" style={{ color: 'white', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
         <h1>User Administration Dashboard</h1>
       </div>
 
-      <div className="admin-controls" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
+      <div className="admin-controls" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px', background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)', borderRadius: '16px' }}>
         <div className="total-users">
           Total Users: <strong>{users.length}</strong>
         </div>
@@ -177,16 +182,16 @@ function Admin() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
-            style={{ width: '100%', maxWidth: '400px' }}
+            style={{ width: '100%', maxWidth: '400px', background: '#f7fafc' }}
           />
         </div>
         <div className="export-controls" style={{ display: 'flex', gap: '10px' }}>
-          <button onClick={handleDownloadExcel} style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Download Excel</button>
-          <button onClick={handleDownloadCSV} style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Download CSV</button>
+          <button onClick={handleDownloadExcel} className="btn-primary btn-blue" style={{ padding: '10px 16px', marginTop: 0 }}>Download Excel</button>
+          <button onClick={handleDownloadCSV} className="btn-primary btn-purple" style={{ padding: '10px 16px', marginTop: 0 }}>Download CSV</button>
         </div>
       </div>
 
-      <div className="admin-table-container">
+      <div className="admin-table-container" style={{ background: 'rgba(255, 255, 255, 0.95)', backdropFilter: 'blur(10px)', borderRadius: '16px' }}>
         <table className="admin-table">
           <thead>
             <tr>

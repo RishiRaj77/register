@@ -1,0 +1,255 @@
+/* Global Theme Styles inspired by mockup */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #2b6cb0 0%, #9f7aea 50%, #ed64a6 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  text-align: center;
+}
+
+/* Avatar Header */
+.card-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: -20px auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #d442f5 100%);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.card-avatar svg {
+  width: 36px;
+  height: 36px;
+}
+
+.glass-card h2 {
+  color: #1a202c;
+  font-size: 28px;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+/* Form Styles */
+.theme-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.input-group input {
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: #f7fafc;
+  color: #2d3748;
+}
+
+.input-group input::placeholder {
+  color: #a0aec0;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #9f7aea;
+  box-shadow: 0 0 0 3px rgba(159, 122, 234, 0.2);
+  background: #ffffff;
+}
+
+/* Buttons */
+.btn-primary {
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.1s ease;
+  margin-top: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-blue {
+  background: linear-gradient(135deg, #667eea 0%, #4299e1 100%);
+  box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
+}
+
+.btn-purple {
+  background: linear-gradient(135deg, #d53f8c 0%, #805ad5 100%);
+  box-shadow: 0 10px 20px rgba(128, 90, 213, 0.3);
+}
+
+/* Social Buttons */
+.social-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 25px 0;
+  color: #a0aec0;
+  font-size: 13px;
+}
+
+.social-divider::before,
+.social-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.social-divider:not(:empty)::before {
+  margin-right: .5em;
+}
+
+.social-divider:not(:empty)::after {
+  margin-left: .5em;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.social-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Footer Links */
+.theme-footer {
+  text-align: center;
+  font-size: 14px;
+  color: #718096;
+}
+
+.theme-footer a {
+  color: #3182ce;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.theme-footer a:hover {
+  color: #2b6cb0;
+  text-decoration: underline;
+}
+
+/* Full Page Center */
+.page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Password Toggle */
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 45px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #a0aec0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: #4a5568;
+}
+
+/* Helper */
+.forgot-password {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+.label-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
