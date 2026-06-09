@@ -251,3 +251,38 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+/* Responsive Media Queries */
+@media (max-width: 640px) {
+  .glass-card {
+    padding: 24px;
+    border-radius: 12px;
+    margin: 16px;
+  }
+  
+  .glass-card h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .card-avatar {
+    width: 56px;
+    height: 56px;
+    margin: -16px auto 20px auto;
+  }
+
+  .card-avatar svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .input-group input {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .btn-primary {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
